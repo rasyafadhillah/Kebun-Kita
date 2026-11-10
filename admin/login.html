@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Admin — Kebun Inovasi Polije</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="../index.html" class="brand-logo">
+        <img src="../assets/images/logo-polije.png" 
+             alt="Logo Polije" 
+             onerror="this.src='https://placehold.co/96x96/0A75AD/FFFFFF?text=POLIJE'">
+        <div class="brand-text">
+          <strong>POLITEKNIK</strong>
+          <span>NEGERI JEMBER</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="../tentang-kebun.html" class="nav-item">Tentang Kebun</a>
+        <a href="../kunjungan.html" class="nav-item">Ajukan Kunjungan <span>↗</span></a>
+      </div>
+
+      <a href="../notifikasi.html" class="bell-btn" title="Notifikasi">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main style="flex:1;">
+    <div class="subnav">
+      <div class="container subnav-inner">
+        <span class="subnav-label">LOGIN ADMIN</span>
+      </div>
+    </div>
+
+    <div class="container" style="padding: 64px 24px;">
+      <div style="display:grid; grid-template-columns: 1fr 460px; gap:64px; align-items:center;">
+        <div>
+          <div class="eyebrow">KEBUN INOVASI POLIJE</div>
+          <h1 class="page-title" style="font-size:52px;">Login Admin</h1>
+          <p class="subtitle" style="margin-bottom:28px;">
+            Ruang khusus pengelola untuk menjaga kegiatan kebun tetap terencana dan kebutuhan air selalu terpantau.
+          </p>
+          <div style="border-top:1px solid var(--border-color); padding-top:18px; color:var(--text-muted); font-size:13px; display:flex; align-items:center; gap:8px;">
+            <span>🔒</span> Akses hanya untuk Manajer dan Petugas.
+          </div>
+        </div>
+
+        <div class="card" style="padding:36px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-size:20px;">🛡️</span>
+            <div>
+              <strong style="font-size:18px; display:block; line-height:1.2;">Masuk ke ruang admin</strong>
+              <span style="font-size:12px; color:var(--text-light);">Kebun Inovasi Polije</span>
+            </div>
+          </div>
+
+          <form onsubmit="handleAdminLogin(event)">
+            <div class="form-group">
+              <label class="form-label">Email Admin</label>
+              <input type="email" id="loginEmail" class="form-input" value="manajer.contoh@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kata sandi *</label>
+              <input type="password" class="form-input" value="••••••••••••" required>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--text-muted); margin: 14px 0 22px;">
+              <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                <input type="checkbox"> Ingat akun saya
+              </label>
+              <a href="#!" style="font-weight:600; color:var(--text-main);">Lupa kata sandi?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; padding:13px;">
+              → Masuk
+            </button>
+          </form>
+
+          <!-- PINTASAN DEMO KE 2 FILE ADMIN -->
+          <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:var(--text-light);">
+            <span>Akses Cepat Demo:</span>
+            <div style="display:flex; gap:8px;">
+              <a href="persetujuan.html" style="border:1px solid var(--border-color); background:var(--bg-subtle); padding:4px 8px; border-radius:4px; color:var(--text-main); font-weight:600;">Manajer</a>
+              <a href="status-air.html" style="border:1px solid var(--border-color); background:var(--bg-subtle); padding:4px 8px; border-radius:4px; color:var(--text-main); font-weight:600;">Petugas</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-admin">
+    <div class="container">
+      <strong style="display:block; font-size:13px;">Kebun Inovasi Polije</strong>
+      <span style="font-size:12px; color:rgba(255,255,255,0.7);">Ruang pengelolaan kebun</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.toLowerCase();
+      if (email.includes('petugas')) {
+        window.location.href = 'status-air.html';
+      } else {
+        window.location.href = 'persetujuan.html';
+      }
+    }
+  </script>
+</body>
+</html>

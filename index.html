@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Datang di Kebun Inovasi Polije</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR PENGUNJUNG -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo-polije.png" 
+             alt="Logo Polije" 
+             onerror="this.src='https://placehold.co/96x96/0A75AD/FFFFFF?text=POLIJE'">
+        <div class="brand-text">
+          <strong>POLITEKNIK</strong>
+          <span>NEGERI JEMBER</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="tentang-kebun.html" class="nav-item">Tentang Kebun</a>
+        <a href="kunjungan.html" class="nav-item">Ajukan Kunjungan <span>↗</span></a>
+      </div>
+
+      <button class="bell-btn" onclick="toggleNotifPopover(event)" title="Notifikasi">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <span class="bell-dot"></span>
+      </button>
+    </div>
+
+    <!-- POPOVER NOTIFIKASI -->
+    <div class="notif-popover" id="notifPopover">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <strong style="font-size:13.5px;">Notifikasi</strong>
+        <span style="font-size:11.5px; color:var(--text-light);">2 baru</span>
+      </div>
+      <div class="notif-item-mini approved">
+        <div style="display:flex; gap:8px; align-items:flex-start;">
+          <span style="color:var(--status-green-text); font-weight:bold;">✓</span>
+          <div>
+            <strong style="display:block; color:var(--text-main);">Disetujui</strong>
+            <span style="color:var(--text-muted); font-size:11.5px;">KJ-2026-018 • Rabu, 21 Okt 2026 • 09.00–11.00 WIB</span>
+          </div>
+        </div>
+      </div>
+      <div class="notif-item-mini rejected">
+        <div style="display:flex; gap:8px; align-items:flex-start;">
+          <span style="color:var(--status-red-text); font-weight:bold;">✕</span>
+          <div>
+            <strong style="display:block; color:var(--text-main);">Ditolak</strong>
+            <span style="color:var(--text-muted); font-size:11.5px;">KJ-2026-015 • Kamis, 15 Okt 2026 • 08.00–10.00 WIB</span>
+          </div>
+        </div>
+      </div>
+      <a href="notifikasi.html" class="btn btn-primary" style="width:100%; padding:9px;">
+        Lihat selengkapnya
+      </a>
+    </div>
+  </header>
+
+  <!-- KONTEN BERANDA -->
+  <main style="flex:1;">
+    <div style="position:relative; height:430px; overflow:hidden; background:#1c3124;">
+      <img src="assets/images/hero-beranda.jpg" 
+           alt="Kebun Inovasi Polije" 
+           onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80'"
+           style="width:100%; height:100%; object-fit:cover; filter:brightness(0.88);">
+      <div class="container" style="position:relative; height:100%;">
+        <span style="position:absolute; bottom:22px; left:24px; color:rgba(255,255,255,0.85); font-size:10.5px; letter-spacing:0.1em; font-weight:600;">
+          KEBUN INOVASI POLIJE
+        </span>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:52px;">
+      <div style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap:40px; align-items:center;">
+        <div>
+          <div class="eyebrow">KEBUN INOVASI POLIJE</div>
+          <h1 class="page-title" style="font-size:52px; margin-bottom:24px;">
+            Selamat Datang di<br>Kebun Inovasi Polije
+          </h1>
+          <div style="display:flex; gap:12px;">
+            <a href="tentang-kebun.html" class="btn btn-primary">Kenali Kami</a>
+            <a href="kunjungan.html" class="btn btn-outline">Ajukan Kunjungan <span>↗</span></a>
+          </div>
+        </div>
+        <div>
+          <p class="subtitle" style="font-size:15px; line-height:1.7;">
+            Ruang hijau pembelajaran vokasi, budidaya hortikultura, dan agrowisata edukasi di lingkungan kampus Politeknik Negeri Jember.
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3 style="font-size:13.5px; font-weight:600; margin-bottom:20px;">Potret kebun</h3>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+        <img src="assets/images/potret-1.jpg" 
+             onerror="this.src='https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80'"
+             style="width:100%; height:290px; object-fit:cover; border-radius:8px;" alt="Potret 1">
+        <img src="assets/images/potret-2.jpg" 
+             onerror="this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80'"
+             style="width:100%; height:290px; object-fit:cover; border-radius:8px;" alt="Potret 2">
+        <img src="assets/images/potret-3.jpg" 
+             onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80'"
+             style="width:100%; height:290px; object-fit:cover; border-radius:8px;" alt="Potret 3">
+        <img src="assets/images/potret-4.jpg" 
+             onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80'"
+             style="width:100%; height:290px; object-fit:cover; border-radius:8px;" alt="Potret 4">
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-public">
+    <div class="container">
+      <h2 class="serif-heading">Tentang Kami</h2>
+      <p>
+        Kenali Kebun Inovasi Polije melalui cerita dan suasana kebun. Sebuah pengantar untuk lebih dekat dengan alam, pembelajaran, dan semangat inovasi.
+      </p>
+      <div class="social-links">
+        <a href="#!" class="social-btn" title="Instagram" aria-label="Instagram">◎</a>
+        <a href="#!" class="social-btn" title="YouTube" aria-label="YouTube">▶</a>
+        <a href="#!" class="social-btn" title="Facebook" aria-label="Facebook">f</a>
+      </div>
+      <div class="footer-bottom">
+        <strong>Kebun Inovasi Polije</strong>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

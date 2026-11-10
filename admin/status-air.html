@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Status Air — Petugas Kebun Inovasi Polije</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="../index.html" class="brand-logo">
+        <img src="../assets/images/logo-polije.png" 
+             alt="Logo Polije" 
+             onerror="this.src='https://placehold.co/96x96/0A75AD/FFFFFF?text=POLIJE'">
+        <div class="brand-text">
+          <strong>POLITEKNIK</strong>
+          <span>NEGERI JEMBER</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="../tentang-kebun.html" class="nav-item">Tentang Kebun</a>
+        <a href="../kunjungan.html" class="nav-item">Ajukan Kunjungan <span>↗</span></a>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="text-align:right; line-height:1.2;">
+          <strong style="font-size:13px; display:block;">Petugas</strong>
+          <span style="font-size:11px; color:var(--text-light);">Akun contoh</span>
+        </div>
+        <a href="login.html" class="btn btn-outline" style="padding:7px 12px; font-size:12.5px;">↪ Keluar</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex:1; padding-bottom:64px;">
+    <div class="subnav">
+      <div class="container subnav-inner">
+        <span class="subnav-label">UPDATE STATUS AIR</span>
+        <a href="../index.html" style="font-weight:600; color:var(--text-main);">← Kembali ke Beranda</a>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:44px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:32px;">
+        <div>
+          <div class="eyebrow">KEBUN INOVASI POLIJE</div>
+          <h1 class="page-title">Update status air</h1>
+          <p class="subtitle">
+            Perbarui kondisi pasokan air dan jadwal penyiraman agar kegiatan budidaya dan kunjungan kebun dapat direncanakan dengan baik.
+          </p>
+        </div>
+        <div class="badge-role">🛡️ Khusus Petugas</div>
+      </div>
+
+      <!-- KARTU KONDISI TERKINI -->
+      <div class="card" style="margin-bottom:28px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <strong style="font-size:13px;">Kondisi air terkini</strong>
+          <span>💧</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span id="petugasWaterDot" style="width:9px; height:9px; border-radius:50%; background:#1E633A; display:inline-block;"></span>
+          <strong id="petugasWaterStatus" style="font-size:22px;">Tersedia</strong>
+        </div>
+        <div style="text-align:right; font-size:11.5px; color:var(--text-light); margin-top:16px;" id="petugasWaterTime">
+          Diperbarui 26 Oktober 2026, 07.30 WIB
+        </div>
+      </div>
+
+      <!-- KARTU FORM UBAH STATUS AIR -->
+      <form class="card" onsubmit="saveWaterStatus(event)">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <strong style="font-size:16px;">Ubah status air</strong>
+          <span style="font-size:11.5px; color:var(--text-light);">* Wajib diisi</span>
+        </div>
+
+        <label class="form-label" style="display:block; margin-bottom:10px;">Status pasokan air *</label>
+        <div class="radio-cards">
+          <label class="radio-card selected" onclick="selectWaterRadio('Tersedia', this)">
+            <input type="radio" name="water_status" value="Tersedia" checked style="accent-color:var(--primary-dark);">
+            Tersedia
+          </label>
+          <label class="radio-card" onclick="selectWaterRadio('Terbatas', this)">
+            <input type="radio" name="water_status" value="Terbatas" style="accent-color:var(--primary-dark);">
+            Terbatas
+          </label>
+          <label class="radio-card" onclick="selectWaterRadio('Tidak tersedia', this)">
+            <input type="radio" name="water_status" value="Tidak tersedia" style="accent-color:var(--primary-dark);">
+            Tidak tersedia
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Keterangan kondisi *</label>
+          <textarea id="petugasWaterDesc" class="form-textarea" required>Pasokan air mencukupi untuk penyiraman dan kegiatan praktikum.</textarea>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:22px;">
+          <button type="button" class="btn btn-outline" onclick="loadPetugasView()">Batalkan</button>
+          <button type="submit" class="btn btn-primary">💾 Simpan perubahan</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer-admin">
+    <div class="container">
+      <strong style="display:block; font-size:13px;">Kebun Inovasi Polije</strong>
+      <span style="font-size:12px; color:rgba(255,255,255,0.7);">Ruang pengelolaan kebun</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    let selectedWaterValue = 'Tersedia';
+
+    function selectWaterRadio(val, labelEl) {
+      selectedWaterValue = val;
+      document.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+      labelEl.classList.add('selected');
+    }
+
+    function loadPetugasView() {
+      const water = JSON.parse(localStorage.getItem('polije_water'));
+      if (!water) return;
+      document.getElementById('petugasWaterStatus').textContent = water.status;
+      document.getElementById('petugasWaterTime').textContent = water.updated;
+      document.getElementById('petugasWaterDesc').value = water.desc;
+      selectedWaterValue = water.status;
+
+      const dot = document.getElementById('petugasWaterDot');
+      dot.style.background = water.status === 'Tersedia' ? '#1E633A' : (water.status === 'Terbatas' ? '#9C5714' : '#A82831');
+
+      document.querySelectorAll('.radio-card').forEach(card => {
+        const input = card.querySelector('input');
+        if (input.value === water.status) {
+          card.classList.add('selected');
+          input.checked = true;
+        } else {
+          card.classList.remove('selected');
+        }
+      });
+    }
+
+    function saveWaterStatus(e) {
+      e.preventDefault();
+      const desc = document.getElementById('petugasWaterDesc').value;
+      const updatedWater = {
+        status: selectedWaterValue,
+        desc: desc,
+        updated: 'Diperbarui 26 Oktober 2026, 07.30 WIB'
+      };
+      localStorage.setItem('polije_water', JSON.stringify(updatedWater));
+      loadPetugasView();
+      alert('Status pasokan air berhasil diperbarui!');
+    }
+
+    loadPetugasView();
+  </script>
+</body>
+</html>
